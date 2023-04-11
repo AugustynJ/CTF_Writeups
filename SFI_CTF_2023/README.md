@@ -32,6 +32,6 @@ We can search in internet:
 
 *A robots.txt file tells search engine crawlers which URLs the crawler can access on your site*
 
-Therefore, we should find file *robots.txt*. It is on [ctf.sfi.pl/robots.txt](ctf.sfi.pl/robots.txt)
+Therefore, we should find file *robots.txt*. It is on [ctf.sfi.pl/robots.txt](https://ctf.sfi.pl/robots.txt)
 
 **sfi18_ctf{LQbvJJc1Ulj8}**
