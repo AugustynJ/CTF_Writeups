@@ -54,7 +54,9 @@ Looks like a game, but you mustn't run it. Just use one command:
 strings V-Pong.exe | grep sfi18
 ```
 that gives you flag immediately:
+
 ![vpong](./images/vpong.png)
+
 **sfi18_ctf{LetMe(W)In}** Simple as that.
 
 
