@@ -45,4 +45,17 @@ We are starting with thic pic:
 After fast research we discover [Olivier Levasseur](https://en.wikipedia.org/wiki/Olivier_Levasseur) - pirate called "La Bouche"! And he invented his own cipher. Looks similar?
 Decrypting ciphertext gives us: **QUAVOUSSERERLA**, which is obviously a flag.
 
+## vpong_game
+
+You can download file [here](./files/V-Pong.exe)
+
+Looks like a game, but you mustn't run it. Just use one command:
+```bash
+strings V-Pong.exe | grep sfi18
+```
+that gives you flag immediately:
+![vpong](./images/vpong.png)
+**sfi18_ctf{LetMe(W)In}** Simple as that.
+
+
 
