@@ -13,7 +13,7 @@ Nothing to do.
 
 ## cryptic_website
 
-![cryptic_website](./miages/cryptic_website.png)
+![cryptic_website](./images/cryptic_website.png)
 
 Copy text and paste somewhere gives you flag:
 > sfi18_ctf{HelloThere!}
