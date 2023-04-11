@@ -6,8 +6,7 @@ Capture The Flag Competition organized on Students' IT Festival in Kraków.
 
 You’ve got a message!
 The flag is:
-
-> sfi18_ctf{hello_world!}
+**sfi18_ctf{hello_world!}**
 
 Nothing to do.
 
@@ -15,5 +14,5 @@ Nothing to do.
 
 ![cryptic_website](./images/cryptic_website.png)
 
-Copy text and paste somewhere gives you flag:
-> sfi18_ctf{HelloThere!}
+You can jest copy text and paste somewhere. This gives you flag:
+**sfi18_ctf{HelloThere!}**
