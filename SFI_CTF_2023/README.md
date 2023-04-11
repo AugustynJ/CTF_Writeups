@@ -35,3 +35,14 @@ We can search in internet:
 Therefore, we should find file *robots.txt*. It is on [ctf.sfi.pl/robots.txt](https://ctf.sfi.pl/robots.txt)
 
 **sfi18_ctf{LQbvJJc1Ulj8}**
+
+## la_bouche
+
+We are starting with thic pic:
+
+![la_bouche](./images/la_bouche.png)
+
+After fast research we discover [Olivier Levasseur](https://en.wikipedia.org/wiki/Olivier_Levasseur) - pirate called "La Bouche"! And he invented his own cipher. Looks similar?
+Decrypting ciphertext gives us: **QUAVOUSSERERLA**, which is obviously a flag.
+
+
