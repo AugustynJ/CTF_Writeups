@@ -157,7 +157,11 @@ We can use PNG headers [specification](https://en.wikipedia.org/wiki/PNG#File_he
 
 First of all - 8-byte signature at the begining of file : `89 50 4E 47 0D 0A 1A 0A`
 
-Next there're some of useless for us information. Important is the last field of `IHDR` header - CRC sum. There are many implementations of this algorithm, but I used [PCRT](https://github.com/sherlly/PCRT) app to repair file.
+Progress! There is other error than earlier!
+
+![2](./images/unknown_file_2.png)
+
+The key is the last field of `IHDR` header - CRC sum. There are many implementations of this algorithm, but I used [PCRT](https://github.com/sherlly/PCRT) app to repair file.
 
 And we got it!
 
@@ -169,3 +173,19 @@ REMEMBER:
 So the flag is: **sfi18_ctf{corrupted_89504e47}**
 
 ## photo
+
+![photo](./images/photo.jpg)
+
+We must find where is this place. Just look at the left bottom corner:
+
+![1](./images/photo_1.png)
+
+Phone number? After fast research we got [owner](https://www.az-polska.com/firmy/opal_fphu_wioletta_michajow-morek_rzaska_mp_krakowska_45). Using Google Maps search the location - and place of the red arrow:
+ ![2](./images/photo_2.png)
+
+The flag is address on the fenence: **krakowska 50**
+
+While submiting remember:
+>Hint: the response is all lowercase with no spaces.
+
+
