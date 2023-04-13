@@ -149,4 +149,23 @@ And that's the end. Page displays us a flag: **sfi18_ctf{idonthavetheflagandwebs
 
 ## unknown_file
 
-We started with a cursed (and damaged?) [file](./files/unknown_file) with no extension
+We started with a cursed (and damaged?) [file](./files/unknown_file) with no extension. Let's try to find something in bytes of that (I used `ghex`). ![unknown1](./images/unknown_file_1.png)
+
+Looks like image. Maybe PNG? Let's try to repair this!
+
+We can use PNG headers [specification](https://en.wikipedia.org/wiki/PNG#File_header) to do it.
+
+First of all - 8-byte signature at the begining of file : `89 50 4E 47 0D 0A 1A 0A`
+
+Next there're some of useless for us information. Important is the last field of `IHDR` header - CRC sum. There are many implementations of this algorithm, but I used [PCRT](https://github.com/sherlly/PCRT) app to repair file.
+
+And we got it!
+
+![We got him!](./images/unknown_file_final.png)
+
+REMEMBER:
+>Hint: the flag is all lowercase.
+
+So the flag is: **sfi18_ctf{corrupted_89504e47}**
+
+## photo
