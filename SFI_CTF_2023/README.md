@@ -188,4 +188,25 @@ The flag is address on the fenence: **krakowska 50**
 While submiting remember:
 >Hint: the response is all lowercase with no spaces.
 
+## losts_bits
+
+We started with 12 groups of 7 bits:
+```
+1000110 1111100 1011010
+1110110 0010101 1111001
+1111010 1011111 0100000
+0010000 0000100 0100111
+```
+
+After long, long (long...) research I found a solution: huffman(7, 4) coding. There was a trap: before and after decoding we must reverse each bits group. You can decrypt message e. g. [here](https://www.dcode.fr/hamming-error-correction).
+
+After decrypt we got these bits:
+```
+1101 1110 1010 1101
+1011 1110 1110 1111
+0000 0000 0000 0001
+```
+which obviously are hex characters that you can decode [here](https://gchq.github.io/CyberChef/).
+
+And we got him! Flag is **sfi18_ctf{deadbeef0001}** (remember lowercase!).
 
