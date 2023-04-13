@@ -235,3 +235,33 @@ Pass looks like kind of hash. 40 characters has only SHA-1. It's time to crack. 
 
 After all we got text file with flag: **sfi18_ctf{C0ngR4tUl4t10n5}**
 
+## binary_code
+Have a look at the [document](./files/Binary%20Code.pdf). Of course it's encoded in ASCII. Fast decode and we got kinda assemly code (counting line starts from 1 not 0, cringe):
+```
+ 1 | LOAD @ 12
+ 2 | STORE @ 14
+ 3 | LOAD @ 13
+ 4 | SUB $ 1
+ 5 | JZERO $ 11
+ 6 | STORE @ 13
+ 7 | LOAD @ 14
+ 8 | MULT @ 12
+ 9 | STORE @ 14
+10 | JUMP $ 3
+11 | END $ 0
+12 | 5
+13 | 3
+14 | 0
+```
+Sooo there are instructions in lines 1-11 and values at 12-14. And there're special signs: 
+
+`@` - means line number
+
+`$` - means just number
+
+So the program will load valure from liine 12 - `5` and store it in line 14. Next, decrease value in line 13 and (if not zero) - go on (lines 3-6). Following, multiply (line 8) value from 14 (actually it's `5`) five times and store result (`25`) in line 14. `JUMP $3` means that lines 3 - 10 are loop. It will execute 3 times and program stops. 
+
+After all operations in line 14 there's `125` and this is flag: **sfi18_ctf{125}**.
+
+Again - not obviously flag.
+
