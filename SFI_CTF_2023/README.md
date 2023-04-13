@@ -264,4 +264,3 @@ So the program will load valure from liine 12 - `5` and store it in line 14. Nex
 After all operations in line 14 there's `125` and this is flag: **sfi18_ctf{125}**.
 
 Again - not obviously flag.
-
