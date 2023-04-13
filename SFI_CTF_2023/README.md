@@ -124,3 +124,29 @@ b2,rgba,msb,xy      .. text: ["@" repeated 165 times]
 And this is flag: **sfi18_ctf{SHOULD_YOU_SEE_ME?}**
 
 Not obviously imho.
+
+## post_office
+
+This is page of post office organization. Every button displays a message about errors.
+
+In the sourcepage there was a comment looks like base64 encoded text:
+```
+aW5kZXgucGhwCmxvZ2luOiBhZG1pbgpwYXNzd29yZDogc2Zpc2Zpc2Zp
+```
+After decoding we recieve passes to... what?
+```
+index.php
+login: admin
+password: sfisfisfi
+```
+Let's use BurpSuite and add a header to site:
+```javascript
+login=admin&passwword=sfisfisfi
+```
+We must to change method from GET to POST (like PoSt OfFiCe).
+
+And that's the end. Page displays us a flag: **sfi18_ctf{idonthavetheflagandwebsiteisdonwwillfixinthefuture}**
+
+## unknown_file
+
+We started with a cursed (and damaged?) file with no extension
