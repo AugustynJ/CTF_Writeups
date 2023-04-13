@@ -149,4 +149,4 @@ And that's the end. Page displays us a flag: **sfi18_ctf{idonthavetheflagandwebs
 
 ## unknown_file
 
-We started with a cursed (and damaged?) file with no extension
+We started with a cursed (and damaged?) [file](./files/unknown_file) with no extension
