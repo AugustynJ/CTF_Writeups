@@ -59,5 +59,68 @@ that gives you flag immediately:
 
 **sfi18_ctf{LetMe(W)In}** Simple as that.
 
+## wild_west
 
+We started with cursed map:
 
+![wild_west](./files/map.svg)
+
+As we can see it's kinda adding:
+```
+OREGON = KANSAS + OHIO
+```
+It's popular puzzle. Every letter from above has own number:
+```
+0 = R
+1 = G
+2 = S
+3 = E
+4 = K
+5 = O
+6 = I
+7 = N
+8 = H
+9 = A
+```
+Very importatnt were hints to this challenge:
+> Hints:
+>
+>The value of every variable is unique.
+>
+>The flag is uppercase and sorted in ascending order.
+
+Every letter has unique number - done
+
+Ascending order means letters according to numbers in order:
+
+0 1 2 3 4 5 6 7 8 9
+
+R G S E K O I N H A
+
+So the flag is: **sfi18_ctf{RGSEKOINHA}**
+
+## images 
+
+We have two identical images:
+
+![a](./images/a.png)
+![b](./images/b.png)
+
+This challenge required advanced steganography tool: **[zsteg](https://github.com/zed-0xff/zsteg)**.
+
+Using this command we get output:
+```diff
+$ zsteg -a b.png 
+
+imagedata           .. file: Windows Precompiled iNF, version 0.1, InfStyle 1, flags 0x1ff0001, unicoded, at 0x1000100 "", OsLoaderPath "", LanguageID 0, at 0x1000100 InfName ""
+-b1,rgba,lsb,xy      .. text: "SHOULD_YOU_SEE_ME?"
+b2,r,lsb,xy         .. file: Novell LANalyzer capture file
+b2,g,lsb,xy         .. text: "DUUTUTUUQ"
+b2,b,lsb,xy         .. file: PEX Binary Archive
+b2,a,msb,xy         .. text: ["U" repeated 41 times]
+b2,bgr,lsb,xy       .. file: 0421 Alliant compact executable not stripped
+b2,rgba,msb,xy      .. text: ["@" repeated 165 times]
+```
+And this is flag: **sfi18_ctf{SHOULD_YOU_SEE_ME?}**
+
+Not obviously imho.
