@@ -210,3 +210,28 @@ which obviously are hex characters that you can decode [here](https://gchq.githu
 
 And we got him! Flag is **sfi18_ctf{deadbeef0001}** (remember lowercase!).
 
+## camera_model 
+
+File to this challenge: [click me!](./files/downloader.zip)
+
+We got a few files from this zip: photo, note and... another zip.
+So, what's in the note?
+```
+Pass: the model of the phone that took the picture
+```
+Lessgo! Exiftool says: `Camera Model Name : SM-S901B`, that is used in (fast research...) **SamsungS22**. 
+
+And this is password to `deep.zip`, which contains... ANOTHER ZIP FILE!
+
+![XD](./images/there_is_another.jpg)
+
+And there's another note:
+```
+Pass: 440a2432cc29c4838d5574b0a38061ebcaa63f78
+
+Buuuut, black -> emerald
+```
+Pass looks like kind of hash. 40 characters has only SHA-1. It's time to crack. Fortunately I tried to crack hash using [hashcat](https://github.com/hashcat/hashcat) with [rockyou](https://www.kaggle.com/datasets/wjburns/common-password-list-rockyoutxt) - common passwords in one file - as dictionary. And immediately found that - black_pearl261981 `Buuuut, black -> emerald`, so password for `deeper.zip` is emmerald_pearl261981.
+
+After all we got text file with flag: **sfi18_ctf{C0ngR4tUl4t10n5}**
+
