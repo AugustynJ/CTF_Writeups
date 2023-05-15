@@ -63,7 +63,7 @@ print(f"ct = {ct.hex()}")
 
 Okay, as title said, in this case we have a brush with AES in CBC mode, so to decrypt we need key and iv. Python script provides us the second one but what with the key? It's only 16 byte length. What about bruteforce? YES!
 
-But there's another way to decrypt. If we run above code a few times we can see that every key begins with 4 bits, and the rest is `\0e` repeated. So out bruteforce will be a bit faster:
+But there's another way to decrypt. If we run above code a few times we can see that every key begins with 4 bits, and the rest is `\0e` repeated. So our bruteforce will be a bit faster:
 
 ```python
 from Crypto.Cipher import AES
@@ -135,9 +135,11 @@ with open("output.txt", "wb") as f:
 ```
 And output file is in byte view: `b'\xd5\xe4\xb7\xc7\x92$\x8e2'`
 
+During writing reverse script I find out it is indeed kind of linear-feedback shift register (LFSR) - based on bits choosed by mask the program adds another bit at the end of binary sequence. Therefore - based on bits of flag we must recreate bits of challenge flag.
 
+Warning! List `states` contains **swaped** halves of flag!
 
-And here we go! Program that submits our flag:
+And here we go! Program that show us our flag:
 ```python
 from Crypto.Util.number import *
 
