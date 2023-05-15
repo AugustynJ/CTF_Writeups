@@ -94,3 +94,77 @@ while 1:
 
 And program gives us flag: **cvctf{b4by_AES_s1mpL3}**
 
+## LFSR Explorer 
+
+Bored python scripts? Great! There's another:
+
+```python
+from Crypto.Util.number import *
+from secret import flag
+
+assert flag.startswith("cvctf{")
+assert flag.endswith("}")
+
+flag = flag[6:-1].encode()
+assert len(flag) == 8
+
+def explore(state, mask):
+    curr = (state << 1) & 0xffffffff
+    i = state & mask & 0xffffffff
+    last = 0
+    while i != 0:
+        last ^= (i & 1)
+        i >>= 1
+    curr ^= last
+    return (curr, last)
+
+states = [bytes_to_long(flag[4:]), bytes_to_long(flag[:4])]
+mask = 0b10000100010010001000100000010101
+
+output = []
+for i in range(8):
+    tmp = 0
+    for j in range(8):
+        (states[i // 4], out) = explore(states[i // 4], mask)
+        tmp = (tmp << 1) ^ out
+    output.append(tmp)
+
+with open("output.txt", "wb") as f:
+    f.write(bytes(output))
+
+```
+And output file is in byte view: `b'\xd5\xe4\xb7\xc7\x92$\x8e2'`
+
+
+
+And here we go! Program that submits our flag:
+```python
+from Crypto.Util.number import *
+
+def number_bytes(i):
+    last = 0
+    while i != 0:
+        last ^= (i & 1)
+        i >>= 1
+    return last
+
+
+with open("output.txt", "rb") as f:
+    data = f.read()
+
+mask = 0b10000100010010001000100000010101
+
+left = bytes_to_long(data[4:])
+right = bytes_to_long(data[:4])
+elements = [left, right]
+
+for flag in elements:
+    flag_str = format(flag, '#b')[2:]
+    for i in range (32):
+        flag = flag // 2
+        if(number_bytes(flag & mask) != ord(flag_str[31-i]) - 48):
+            flag += 1 * (2 ** 31)
+    print(long_to_bytes(flag).decode(), end="")
+```
+
+**cvctf{G@@d_j0b}**
