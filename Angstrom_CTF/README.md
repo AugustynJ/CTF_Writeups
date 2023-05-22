@@ -65,4 +65,7 @@ if len(fake_psi(one_encoding(x, 64), zero_encoding(y, 64))) == 0 and x > y and x
 Simple cryptography challenge. Let's solve in steps:
 
 1. `len(fake_psi(...)) == 0) and x > y and x > 0 and y > 0` $\Rightarrow $ function `fake_psi` returns list of objects, so arguments must be zeros.
-2. `one_encoding(x, 64)` must equals to `0`. In this case we interpret number in binary form. Something is on the `ret` (like return) list only if the last byte is set as `1`. 
+2. `one_encoding(x, 64)` must equals to $0$. In this case we interpret number in binary form. Something is on the `ret` (like return) list only if the last byte is set as $1$. But how much bytes? It's in $n$ parameter. At the end it removes the last byte. So if we want to get empty output we must submit $x$ number that has $n$ zeros in byte form at the end. In challenge $n=64$, so x that comply with requirements is e. g. $2^{64} = 18446744073709551616$
+3. `zero_encoding(y, 64)` must equals to $0$ too. So let's analyze. It's similar to above, but now it appends something to `ret` list if last byte equals to $0$. So we need such $x$, that has $n$ last bytes equal to $1$. In the challenge case $n=64$, so solution can be $2^{64} - 1 = 18446744073709551615$
+
+After submiting such numbers it gives us flag: **actf{se3ms_pretty_p0ssible_t0_m3_7623fb7e33577b8a}**
