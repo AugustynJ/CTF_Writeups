@@ -166,6 +166,6 @@ def decode128(n):
     return result[::-1]
 ```
 
-Final result: **actf{f80f6086a77b}**
+Final result: **actf{f80f6086a77b}**. Idk where is Lagrange reference.
 
 Note: It's not only my solve - contributed by qualorm. Thank you for help!
