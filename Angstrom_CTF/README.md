@@ -139,4 +139,33 @@ while True:
 		break
 ```
 
-To be continued...
+So what happened here?
+
+From the first lines we realize that flag contains 18 signs. Next - there are two queries, the first returns us one number, the other one - list. 
+
+The most important in `query1` is *for* loop:
+```python
+res += f'{sum(a[j] * x_i ** j for j in range(N)) % M}\n'
+```
+For each of sign is calculated weird sum: $a_j \cdot x_i \cdot j^N$, where $a$ - signs of flag, $x$ - your input $j \in {0, 1, 2, 3, ...}$ .
+
+Seems like $x$-based numeric system. That's it! But be careful - output from `query1` is number MOD $2^{127} -1$, so the $x$ cannot be too large. Signs are in ascii format $\Rightarrow $ `ord(sign) < 128`.
+
+The answer is send 128 to `query1` and decode it as 128-base number. Example decoder:
+
+```python
+def decode128(n):
+    MOD = 128
+    result = []
+    while n > MOD:
+        r = n % MOD
+        result.append(r)
+        n = (n-r) // MOD
+    result.append(n)
+
+    return result[::-1]
+```
+
+Final result: **actf{f80f6086a77b}**
+
+Note: It's not only my solve - contributed by qualorm. Thank you for help!
