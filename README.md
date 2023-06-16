@@ -1,4 +1,4 @@
-# CTF
+# CTF Writeups
 Solutions for CTF Competitions.
 
 In case of group CTF, there are solutions only for challenges solved by me.
