@@ -9,4 +9,4 @@ In case of group CTF, there are solutions only for challenges solved by me.
 
 ## [ångstromCTF](https://github.com/AugustynJ/CTF/tree/main/Angstrom_CTF) 
 
-## [p4 final CTF](https://github.com/AugustynJ/CTF/tree/main/Angstrom_CTF) 
+## [p4 final CTF](https://github.com/AugustynJ/CTF_Writeups/tree/main/p4_final_2023)
