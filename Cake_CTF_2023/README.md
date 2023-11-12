@@ -97,11 +97,11 @@ During analysis we realize that there's so many random values that we couldn't r
 
 The values that we know and are possible to use: $p, g=2, vkey = (w, v) $ and modular inversions of some of them.
 
-As we can see, function `verify` we can write as: $g^{m} = s^{w} * t^{-v}  \mod p$, where $s, t$ are powers of $g$ too. And the goal is to get $s, t$ values for `m = 'cake_does_not_eat_cat'`, which we cannot get from signing that message. Because of `sha512` any type of guessing or bruteforce is sensless. 
+As we can see, function `verify` we can write as: $g^{m} = s^{w} \cdot t^{-v}  \mod p$, where $s, t$ are powers of $g$ too. And the goal is to get $s, t$ values for `m = 'cake_does_not_eat_cat'`, which we cannot get from signing that message. Because of `sha512` any type of guessing or bruteforce is sensless. 
 
 So what's the point? The solve is `inverse` function. Because of we know $skey = (w, v)$ values and we know from the content of challenge that $w, v \bot p$, so we can calculate their modular inversions.
 
-But why? Look, if we couldn't calculate $s, t$ values for `magic_word` we will prepare it ourselves. We know that $s = g^x $ and $t = g^y$ for inteeger $x, y$. Now, function `verify` looks like:  $g^{m} = g^{x^w} * g^{y^{-v}}  \mod p$. 
+But why? Look, if we couldn't calculate $s, t$ values for `magic_word` we will prepare it ourselves. We know that $s = g^x $ and $t = g^y$ for inteeger $x, y$. Now, function `verify` looks like:  $g^{m} = g^{x^w} \cdot g^{y^{-v}}  \mod p$. 
 
 Base is $g$, so we can focus only on exponents: $m = x\cdot w + y\cdot (-v) \mod (p-1)$, where we can determine $x, y$ values. For example they could be: $x = (m-1)\cdot w^{-1} \mod (p-1)$ and $y = (-v)^{-1} \mod (p-1)$.
 
