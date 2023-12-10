@@ -98,9 +98,9 @@ if __name__ == '__main__':
     main()
 ```
 
-So wehave to guess 256-bit key using 19 queries to server. One of most important lines in program: `sum([self.coeffs[i] * x**i for i in range(self.d+1)])`.
+So wehave to guess 256-bit key using 19 queries to server. One of most important lines in program: `sum([self.coeffs[i] * x**i for i in range(self.d+1)])`. What does it means? Well, it's kind of numeric system where base is $x$. 
 
-What does it means? Well, it's kind of numeric system where base is $x$. Next information from there: `self.coeffs = [self.key] + [bytes_to_long(os.urandom(self.BITS//8)) for _ in range(self.d)]` meand that `coeffs[0] = key`. So from modular arithmetic: $$ key = poly(x) \mod x$$
+Next information from there: `self.coeffs = [self.key] + [bytes_to_long(os.urandom(self.BITS//8)) for _ in range(self.d)]` means that `coeffs[0] = key`. So from modular arithmetic: $key = poly(x) \mod x$
 
 That's a lot. With that knowledge we can use center-piece - [Chinese Remainder Theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem)! Using CRT we can solve this challenge. Why?
 - Number of queries: 19
